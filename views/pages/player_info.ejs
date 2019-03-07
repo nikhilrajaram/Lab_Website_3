@@ -24,16 +24,22 @@
 								    	options += '<option>' + item.name + '</option>\n';
 								    });
 								} else {
-									var options = '<option>Select Player</option>\n';
-									data.forEach(function(item) {
-										if (cur_player.length < 1) {
-											{};
-										} else if (item.name == cur_player[0].name) {
-											options += '<option selected>' + item.name + '</option>\n';
-										} else {
+									var options = '';
+									if (cur_player.length < 1) {
+										options = '<option selected>Select Player</option>\n';
+										data.forEach(function(item) {
 											options += '<option>' + item.name + '</option>\n';
-										}
-									})
+										});
+									} else {
+										options = '<option>Select Player</option>\n';
+										data.forEach(function(item) {
+											if (item.name == cur_player[0].name) {
+												options += '<option selected>' + item.name + '</option>\n';
+											} else {
+												options += '<option>' + item.name + '</option>\n';
+											}
+										});
+									}
 								}
 							 %>
 							 <%-options%>
